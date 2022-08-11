@@ -15,7 +15,7 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width / vScale, height / vScale);
   video.hide();
-  setInterval(increment, 5000); // 1000 ms = every 1 seconds，每n秒执行一次function
+  setInterval(increment, 500); // 1000 ms = every 1 seconds，每n秒执行一次function
 
   for(var i = 0; i < 640*480*4; i++){
     Gray[i] = 1;
@@ -44,34 +44,64 @@ function mouseClicked(){
 function draw() {
   //background(51);
   // image(video, 0, 0, width, height);
-
   loadPixels();
   video.loadPixels();
 
   if(pose){
-    x = Math.floor(pose.nose.x);
-    y = Math.floor(pose.nose.y);//mouseY;//pose.nose.y;
+
+    x0 = Math.floor(pose.nose.x);
+    y0 = Math.floor(pose.nose.y);//mouseY;//pose.nose.y;
     // console.log(x)
     // console.log(y)
-    for(var m = y-30; m < y+30; m++){
-      for(var n = x-30; n< x+30; n++){
+    for(var m = y0-70; m < y0+70; m++){
+      for(var n = x0-70; n< x0+70; n++){
         var index0 = (n + m*width)*4
           Gray[index0] = 1;
 
       }
     }
+    if(pose.rightWrist.x ){
+      x1 = Math.floor(pose.rightWrist.x);
+      y1 = Math.floor(pose.rightWrist.y);//mouseY;//pose.nose.y;
+      // console.log(x)
+      // console.log(y)
+      for(var m = y1-70; m < y1+70; m++){
+        for(var n = x1-70; n< x1+70; n++){
+          var index1 = (n + m*width)*4
+            Gray[index1] = 1;
+
+        }
+      }
+    }
+    
+    if(pose.leftWrist.x){
+      x2 = Math.floor(pose.leftWrist.x);
+      y2 = Math.floor(pose.leftWrist.y);//mouseY;//pose.nose.y;
+      // console.log(x)
+      // console.log(y)
+      for(var m = y2-70; m < y2+70; m++){
+        for(var n = x2-70; n< x2+70; n++){
+          var index2 = (n + m*width)*4
+            Gray[index2] = 1;
+
+        }
+      }
+      }
+    
     
   }
     
 
   for(var i = 0; i < height; i++){
-    for(var j = width; j > 0; j--){
+    for(var j = 0; j< width; j++){
       var index = (j + i*width)*4
-      pixels[index+0] = video.pixels[index+0];
-      pixels[index+1] = video.pixels[index+1];
-      pixels[index+2] = video.pixels[index+2];
+      var indexV = ((i+1)*width-j-1)*4;
 
-      pixels[index+3] = video.pixels[index+3]/Gray[index];//除数越大，图像越灰
+      pixels[index+0] = video.pixels[indexV+0];
+      pixels[index+1] = video.pixels[indexV+1];
+      pixels[index+2] = video.pixels[indexV+2];
+
+      pixels[index+3] = video.pixels[indexV+3]/Gray[indexV];//除数越大，图像越灰
  
     }
   }
@@ -85,7 +115,7 @@ function draw() {
 
 function increment() {
   for(var i = 0; i < 640*480*4; i++){
-    Gray[i] += 0.05;
+    Gray[i] += 0.01;
   }
 }
 
