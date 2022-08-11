@@ -44,7 +44,8 @@ function mouseClicked(){
 function draw() {
   //background(51);
   // image(video, 0, 0, width, height);
-
+translate(video.width, 0);
+scale(-1, 1);
   loadPixels();
   video.loadPixels();
 
@@ -79,8 +80,7 @@ function draw() {
   updatePixels();
   video.updatePixels();
   //image(video, mouseX, mouseY, 30, 30, mouseX, mouseY, 30, 30);
-translate(video.width, 0);
-scale(-1, 1);
+
 
 }
 
