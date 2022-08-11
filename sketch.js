@@ -15,7 +15,7 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width / vScale, height / vScale);
   video.hide();
-  setInterval(increment, 1000); // 1000 ms = every 1 seconds，每n秒执行一次function
+  setInterval(increment, 5000); // 1000 ms = every 1 seconds，每n秒执行一次function
 
   for(var i = 0; i < 640*480*4; i++){
     Gray[i] = 1;
