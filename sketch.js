@@ -115,7 +115,7 @@ function draw() {
 
 function increment() {
   for(var i = 0; i < 640*480*4; i++){
-    Gray[i] += 0.01;
+    Gray[i] += 0.03;
   }
 }
 
