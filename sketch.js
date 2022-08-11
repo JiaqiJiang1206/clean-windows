@@ -8,6 +8,9 @@ let pose;
 let x;
 let y;
 
+let slider;
+let ms;
+
 
 function setup() {
   createCanvas(640, 480);
@@ -15,7 +18,9 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width / vScale, height / vScale);
   video.hide();
-  setInterval(increment, 100); // 1000 ms = every 1 seconds，每n秒执行一次function
+  slider = createSlider(100, 5000, 1000, 100);
+  ms = slider.value();
+  setInterval(increment, ms); // 1000 ms = every 1 seconds，每n秒执行一次function
 
   for(var i = 0; i < 640*480*4; i++){
     Gray[i] = 1;
