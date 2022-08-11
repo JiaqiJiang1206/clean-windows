@@ -44,8 +44,7 @@ function mouseClicked(){
 function draw() {
   //background(51);
   // image(video, 0, 0, width, height);
-translate(video.width, 0);
-scale(-1, 1);
+
   loadPixels();
   video.loadPixels();
 
@@ -66,7 +65,7 @@ scale(-1, 1);
     
 
   for(var i = 0; i < height; i++){
-    for(var j = 0; j< width; j++){
+    for(var j = width; j > 0; j--){
       var index = (j + i*width)*4
       pixels[index+0] = video.pixels[index+0];
       pixels[index+1] = video.pixels[index+1];
