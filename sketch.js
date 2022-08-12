@@ -8,8 +8,8 @@ let pose;
 let x;
 let y;
 
-let slider;
-let ms;
+//let slider;
+//let ms;
 
 
 function setup() {
@@ -18,9 +18,9 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width / vScale, height / vScale);
   video.hide();
-  slider = createSlider(100, 5000, 1000, 100);
-  ms = slider.value();
-  setInterval(increment, ms); // 1000 ms = every 1 seconds，每n秒执行一次function
+  //slider = createSlider(100, 5000, 1000, 100);
+  //ms = 1000;
+  setInterval(increment, 1000); // 1000 ms = every 1 seconds，每n秒执行一次function
 
   for(var i = 0; i < 640*480*4; i++){
     Gray[i] = 1;
@@ -49,6 +49,7 @@ function mouseClicked(){
 function draw() {
   //background(51);
   // image(video, 0, 0, width, height);
+  ms = slider.value();
   console.log(ms);
   loadPixels();
   video.loadPixels();
@@ -71,8 +72,8 @@ function draw() {
       y1 = Math.floor(pose.rightWrist.y);//mouseY;//pose.nose.y;
       // console.log(x)
       // console.log(y)
-      for(var m = y1-70; m < y1+70; m++){
-        for(var n = x1-70; n< x1+70; n++){
+      for(var m = y1-40; m < y1+40; m++){
+        for(var n = x1-40; n< x1+40; n++){
           var index1 = (n + m*width)*4
             Gray[index1] = 1;
 
@@ -85,8 +86,8 @@ function draw() {
       y2 = Math.floor(pose.leftWrist.y);//mouseY;//pose.nose.y;
       // console.log(x)
       // console.log(y)
-      for(var m = y2-70; m < y2+70; m++){
-        for(var n = x2-70; n< x2+70; n++){
+      for(var m = y2-40; m < y2+40; m++){
+        for(var n = x2-40; n< x2+40; n++){
           var index2 = (n + m*width)*4
             Gray[index2] = 1;
 
