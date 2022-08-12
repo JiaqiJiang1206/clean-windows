@@ -44,8 +44,7 @@ function modelLoaded() {
 function draw() {
   //background(51);
   // image(video, 0, 0, width, height);
-  ms = slider.value();
-  console.log(ms);
+
   loadPixels();
   video.loadPixels();
 
