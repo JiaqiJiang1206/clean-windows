@@ -1,7 +1,7 @@
 var video;
 var vScale = 1;//调整清晰度
 var Gray = [];
-
+var socket;
 let poseNet;
 let pose;
 
@@ -13,6 +13,8 @@ let y;
 
 
 function setup() {
+  // socket = io.connect('https://windows-clean.herokuapp.com/');
+  socket = io.connect('https://127.0.0.1:3000');
   createCanvas(640, 480);
   pixelDensity(1);
   video = createCapture(VIDEO);
