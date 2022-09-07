@@ -9,8 +9,10 @@ app.get("/", (req, res) => {
 // app.listen(port, () => {
 //   console.log(`helloworld: listening on port ${port}`);
 // });
+
 var PORT = process.env.PORT || 3000;
-// app.listen(process.env.PORT || 3000);
+// const server = app.listen(PORT);
+
 const server = app.listen(PORT, () => {
-  console.log('my socket server is running');
+  console.log("My socket server is running");
 })
