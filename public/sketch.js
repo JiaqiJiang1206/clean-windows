@@ -14,8 +14,11 @@ let y;
 
 function setup() {
   socket = io.connect('https://windows-clean.herokuapp.com/');
-  // socket = io.connect('https://127.0.0.1:3000');
-  createCanvas(640, 480);
+  // socket = io.connect('https://localhost:3000');
+  createCanvas(1400, 800);
+  let heng = windowHeight*1.78;
+  let shu = windowHeight;
+  // createCanvas(heng, shu);
   pixelDensity(1);
   video = createCapture(VIDEO);
   video.size(width / vScale, height / vScale);
@@ -34,7 +37,7 @@ function setup() {
   //ms = 1000;
   setInterval(increment, 1000); // 1000 ms = every 1 seconds，每n秒执行一次function
 
-  for(var i = 0; i < 640*480*4; i++){
+  for(var i = 0; i < width*height*4; i++){
     Gray[i] = 1;
   }
   poseNet = ml5.poseNet(video, modelLoaded);
@@ -66,8 +69,8 @@ function draw() {
     y0 = Math.floor(pose.nose.y);//mouseY;//pose.nose.y;
     // console.log(x)
     // console.log(y)
-    for(var m = y0-70; m < y0+70; m++){
-      for(var n = x0-70; n< x0+70; n++){
+    for(var m = y0-140; m < y0+140; m++){
+      for(var n = x0-140; n< x0+140; n++){
         var index0 = (n + m*width)*4
           Gray[index0] = 1;
 
@@ -78,8 +81,8 @@ function draw() {
       y1 = Math.floor(pose.rightWrist.y);//mouseY;//pose.nose.y;
       // console.log(x)
       // console.log(y)
-      for(var m = y1-40; m < y1+40; m++){
-        for(var n = x1-40; n< x1+40; n++){
+      for(var m = y1-100; m < y1+100; m++){
+        for(var n = x1-100; n< x1+100; n++){
           var index1 = (n + m*width)*4
             Gray[index1] = 1;
 
@@ -92,8 +95,8 @@ function draw() {
       y2 = Math.floor(pose.leftWrist.y);//mouseY;//pose.nose.y;
       // console.log(x)
       // console.log(y)
-      for(var m = y2-40; m < y2+40; m++){
-        for(var n = x2-40; n< x2+40; n++){
+      for(var m = y2-100; m < y2+100; m++){
+        for(var n = x2-100; n< x2+100; n++){
           var index2 = (n + m*width)*4
             Gray[index2] = 1;
 
@@ -127,7 +130,7 @@ function draw() {
 }
 
 function increment() {
-  for(var i = 0; i < 640*480*4; i++){
+  for(var i = 0; i < width*height*4; i++){
     Gray[i] += 0.05;
   }
 }
