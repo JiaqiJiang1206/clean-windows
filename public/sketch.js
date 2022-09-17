@@ -13,13 +13,23 @@ let y;
 
 
 function setup() {
-  // socket = io.connect('https://windows-clean.herokuapp.com/');
-  socket = io.connect('https://127.0.0.1:3000');
+  socket = io.connect('https://windows-clean.herokuapp.com/');
+  // socket = io.connect('https://127.0.0.1:3000');
   createCanvas(640, 480);
   pixelDensity(1);
   video = createCapture(VIDEO);
   video.size(width / vScale, height / vScale);
   video.hide();
+  // //画布大小跟随窗口
+  // createCanvas(windowHeight*1.78, windowHeight);
+  // gravity = createVector(0, 0.2);
+  // noStroke();
+  // strokeWeight(4);
+  //
+  // //准备camera
+  // video = createCapture(VIDEO);
+  // video.size(windowHeight*1.78, windowHeight);
+  // video.hide();
   //slider = createSlider(100, 5000, 1000, 100);
   //ms = 1000;
   setInterval(increment, 1000); // 1000 ms = every 1 seconds，每n秒执行一次function
